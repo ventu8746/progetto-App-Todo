@@ -1,7 +1,27 @@
 import React, { useState } from 'react'
 import './App.css'
-import { AddTodo } from './function'
 
+/*
+function Addtodo(todo){
+
+  
+
+}
+*/
+
+/**
+ * 
+ * @param {Array} arr 
+ * @param {string} todo 
+ */
+function addTodoItem(todo){
+  
+  const arrTodo = [{todo:todo,completed:false}];
+  return arrTodo;
+
+}
+
+console.log(addTodoItem('panes'));
 
 function App() {
   const [count, setCount] = useState(0)
