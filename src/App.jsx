@@ -22,7 +22,7 @@ function addItem(arr, string) {
 function App() {
   const [count, setCount] = useState(0)
   const [todos, setTodos] = useState([])
-
+  const [inputText,setInput] = useState('')
   return (
     <div className="App">
       <header className="App-header">
@@ -32,18 +32,16 @@ function App() {
           <form onSubmit={e  => {
             e.preventDefault()
             setTodos(
-              addItem(todos, "testo di prova. Andrebbe preso dall'input")
+              addItem(todos,inputText)
             )
           }}>
-            <input id="inputTodo" onInput={(evt)=>evt.target.value}type="text" />
+            <input id="inputTodo" onInput={(evt)=>setInput(evt.target.value)}type="text" />
             <button type="submit">Submit</button>
           </form>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
+          
         </p>
         {todos.map(todo => (
-          <li>{todo.todo}</li>
+          <li>{todo.todo} <button>Rimuovi</button> <button>Completa</button></li>
         ))}
         
       </header>
