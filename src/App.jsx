@@ -19,11 +19,9 @@ function addItem(arr, string) {
   ]);
 }
 
-
-console.log(addTodoItem('panes'));
-
 function App() {
   const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([])
 
   return (
     <div className="App">
@@ -33,7 +31,9 @@ function App() {
         <p>
           <form onSubmit={e  => {
             e.preventDefault()
-
+            setTodos(
+              addItem(todos, "testo di prova. Andrebbe preso dall'input")
+            )
           }}>
             <input id="inputTodo" onInput={(evt)=>evt.target.value}type="text" />
             <button type="submit">Submit</button>
@@ -42,7 +42,10 @@ function App() {
             count is: {count}
           </button>
         </p>
-        <p>first Todo <button>elimina</button>  <button>completato</button></p>
+        {todos.map(todo => (
+          <li>{todo.todo}</li>
+        ))}
+        
       </header>
      
     </div>
