@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
 import './App.css'
 
-/*
-function Addtodo(todo){
-
-  
-
-}
-*/
-
 /**
  * 
- * @param {Array} arr 
- * @param {string} todo 
+ * @param {Array<{text: string, completed: boolean}>} arr 
+ * @param {string} string 
+ * @returns {Array<{text: string, completed: boolean}>}s
  */
-function addTodoItem(todo){
-  
-  const arrTodo = [{todo:todo,completed:false}];
-  return arrTodo;
-
+function addItem(arr, string) {
+  if (string === "") {
+    return arr;
+  }
+  return arr.concat([
+    {
+      todo: string,
+      completed: false,
+    },
+  ]);
 }
+
 
 console.log(addTodoItem('panes'));
 
@@ -32,7 +31,10 @@ function App() {
        
         <h1>App Todo By Marco Venturini</h1>
         <p>
-          <form onSubmit="">
+          <form onSubmit={e  => {
+            e.preventDefault()
+
+          }}>
             <input id="inputTodo" onInput={(evt)=>evt.target.value}type="text" />
             <button type="submit">Submit</button>
           </form>
