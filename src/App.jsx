@@ -63,6 +63,16 @@ function App() {
   
   const [todos, setTodos] = useState([])
   const [inputText,setInput] = useState('')
+
+  function onSubmit(event) {
+    event.preventDefault()
+    if (string !== "") {
+      setTodos(todos.concat({
+        todo: inputText,
+        completed: false,
+      }))
+    }    
+  }
   
   return (
     <div className="App">
@@ -70,12 +80,7 @@ function App() {
        
         <h1>App Todo By Marco Venturini</h1>
         <p>
-          <form onSubmit={e  => {
-            e.preventDefault()
-            setTodos(
-              addItem(todos,inputText)
-            )
-          }}>
+          <form onSubmit={onSubmit}>
             <input id="inputTodo" onInput={(evt)=>setInput(evt.target.value)}type="text" />
             <button type="submit">Submit</button>
           </form>
