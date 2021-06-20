@@ -45,7 +45,7 @@ function App() {
   
   const [todos, setTodos] = useState([])
   const [inputText,setInput] = useState('')
- 
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -64,7 +64,7 @@ function App() {
           
         </p>
         {todos.map((todo,index) => (
-          <li>{todo.todo} <button type="button" onClick={()=>alert(`il todo che sarebbe da eliminare ha indice ${index}`)} >Rimuovi</button> <button>Completa</button></li>
+          <li>{todo.todo} <button type="button" onClick={()=>setTodos(deleteTodo(todos,index))} >Rimuovi</button> <button>Completa</button></li>
         ))}
         
       </header>
