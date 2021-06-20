@@ -39,6 +39,12 @@ function deleteTodo(arr, index) {
 	}
 }
 
+/**
+ *
+ * @param {Array<{text: string, completed: boolean}>} arr
+ * @param {number} index
+ * @returns {Array<{text: string, completed: boolean}>
+ */
 function toggleTodo(arr, index) {
 	if (index > arr.length || index < 0) {
 		throw new Error("the index that you have insert is inexistent");
