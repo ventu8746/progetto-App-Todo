@@ -39,6 +39,24 @@ function deleteTodo(arr,index){
   }
 }
 
+function toggleTodo(arr,index){
+  const newArr=[...arr];
+  
+  if(index>arr.length || index < 0){
+    throw new Error('the index that you have insert is inexistent')
+  }
+
+  if(index === "" || index === undefined){
+    return arr;
+  }else if(arr[index]){
+     newArr[index].completed=!newArr[index].completed;
+      };
+     return newArr;
+    }
+
+
+
+
 
 
 function App() {
@@ -63,8 +81,8 @@ function App() {
           </form>
           
         </p>
-        {todos.map((todo,index) => (
-          <li>{todo.todo} <button type="button" onClick={()=>setTodos(deleteTodo(todos,index))} >Rimuovi</button> <button>Completa</button></li>
+        {todos.map((todo,index) =>(
+          <li className={todo.completed?'completed':''}>{todo.todo} <button type="button" onClick={()=>setTodos(deleteTodo(todos,index))} >Rimuovi</button> <button type="button" onClick={()=>setTodos(toggleTodo(todos,index))}>Completa</button></li>
         ))}
         
       </header>
