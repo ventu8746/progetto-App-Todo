@@ -19,10 +19,33 @@ function addItem(arr, string) {
   ]);
 }
 
+/**
+ * 
+ * @param {Array<{text: string, completed: boolean}>} arr 
+ * @param {number} index 
+ * @returns {Array<{text: string, completed: boolean}>
+ */
+function deleteTodo(arr,index){
+  if(index>arr.length || index < 0){
+    throw new Error('the index that you have insert is inexistent')
+  }
+
+  if(index === "" || index === undefined){
+    return arr;
+  }else{
+    return arr.filter(elem=>{
+      return elem !== arr[index];
+    });
+  }
+}
+
+
+
 function App() {
-  const [count, setCount] = useState(0)
+  
   const [todos, setTodos] = useState([])
   const [inputText,setInput] = useState('')
+ 
   return (
     <div className="App">
       <header className="App-header">
@@ -40,8 +63,8 @@ function App() {
           </form>
           
         </p>
-        {todos.map(todo => (
-          <li>{todo.todo} <button>Rimuovi</button> <button>Completa</button></li>
+        {todos.map((todo,index) => (
+          <li>{todo.todo} <button type="button" onClick={()=>alert(`il todo che sarebbe da eliminare ha indice ${index}`)} >Rimuovi</button> <button>Completa</button></li>
         ))}
         
       </header>
