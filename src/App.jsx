@@ -59,6 +59,7 @@ function toggleTodo(arr, index) {
 }
 
 function App() {
+<<<<<<< HEAD
 	const [todos, setTodos] = useState([]);
 	const [inputText, setInput] = useState("");
 
@@ -101,6 +102,42 @@ function App() {
 			</header>
 		</div>
 	);
+=======
+  
+  const [todos, setTodos] = useState([])
+  const [inputText,setInput] = useState('')
+
+  function onSubmit(event) {
+    event.preventDefault()
+    if (string !== "") {
+      setTodos(todos.concat({
+        todo: inputText,
+        completed: false,
+      }))
+    }    
+  }
+  
+  return (
+    <div className="App">
+      <header className="App-header">
+       
+        <h1>App Todo By Marco Venturini</h1>
+        <p>
+          <form onSubmit={onSubmit}>
+            <input id="inputTodo" onInput={(evt)=>setInput(evt.target.value)}type="text" />
+            <button type="submit">Submit</button>
+          </form>
+          
+        </p>
+        {todos.map((todo,index) =>(
+          <li className={todo.completed?'completed':''}>{todo.todo} <button type="button" onClick={()=>setTodos(deleteTodo(todos,index))} >Rimuovi</button> <button type="button" onClick={()=>setTodos(toggleTodo(todos,index))}>Completa</button></li>
+        ))}
+        
+      </header>
+     
+    </div>
+  )
+>>>>>>> aebb709a3936642d2ba4261c63c65e080e7dc376
 }
 
 export default App;
